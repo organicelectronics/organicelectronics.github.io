@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Formatter</title>
+    <style>
+        /* CSS for visited and unvisited links */
+        a:link {
+            color: blue; /* Unvisited links */
+        }
+        a:visited {
+            color: red; /* Visited links */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Form for input -->
+<form id="stringForm">
+    <textarea id="inputStrings" rows="10" cols="60" placeholder="Paste your strings here"></textarea><br><br>
+    <button type="button" onclick="processStrings()">Submit</button>
+</form>
+
+<!-- Button to open all links in each format -->
+
+
+<div id="outputFormat1"></div>
+
+
+<div id="outputFormat2"></div>
+
+
+<div id="outputFormat3"></div>
+
+
+<div id="outputFormat4"></div>
+
+
+<h3>SMS Links (Help, Info, Stop, Aide, Arret)</h3>
+<div id="outputSMSHelp"></div>
+<div id="outputSMSInfo"></div>
+<div id="outputSMSStop"></div>
+<div id="outputSMSAide"></div>
+<div id="outputSMSArret"></div>
+
+<script>
+    function normalizeSpaces(str) {
+        // Replace all types of spaces (non-breaking, thin, etc.) with regular space
+        return str.replace(/\s+/g, ' ').trim();
+    }
+
+    function openAllLinks(formatId) {
+        // Get all links in the specified format
+        let links = document.getElementById(formatId).getElementsByTagName('a');
+        
+        // Open each link in a new tab with a slight delay to avoid pop-up blockers
+        for (let i = 0; i < links.length; i++) {
+            setTimeout(() => {
+                window.open(links[i].href, '_blank');
+            }, i * 3000); // Delay of 3 seconds for opening each link
+        }
+    }
+
+    function processStrings() {
+        // Get input and split by new lines
+        let input = document.getElementById('inputStrings').value.trim();
+        let lines = input.split('\n');
+
+        // Clear previous output
+        document.getElementById('outputFormat1').innerHTML = '';
+        document.getElementById('outputFormat2').innerHTML = '';
+        document.getElementById('outputFormat3').innerHTML = '';
+        document.getElementById('outputFormat4').innerHTML = '';
+        document.getElementById('outputSMSHelp').innerHTML = '';
+        document.getElementById('outputSMSInfo').innerHTML = '';
+        document.getElementById('outputSMSStop').innerHTML = '';
+        document.getElementById('outputSMSAide').innerHTML = '';
+        document.getElementById('outputSMSArret').innerHTML = '';
+
+        // Process each line
+        lines.forEach(line => {
+            // Normalize any non-standard spaces
+            line = normalizeSpaces(line);
+
+            let parts = line.trim().split(' ');
+            let number = parts[0];  // Extract the number part
+
+            // Create SMS Links for each type
+            document.getElementById('outputSMSHelp').innerHTML += `<a href="sms:${number}?body=Help" target="_blank">Send Help to ${number}</a><br>`;
+            document.getElementById('outputSMSInfo').innerHTML += `<a href="sms:${number}?body=Info" target="_blank">Send Info to ${number}</a><br>`;
+            document.getElementById('outputSMSStop').innerHTML += `<a href="sms:${number}?body=Stop" target="_blank">Send Stop to ${number}</a><br>`;
+            document.getElementById('outputSMSAide').innerHTML += `<a href="sms:${number}?body=Aide" target="_blank">Send Aide to ${number}</a><br>`;
+            document.getElementById('outputSMSArret').innerHTML += `<a href="sms:${number}?body=Arret" target="_blank">Send Arret to ${number}</a><br>`;
+        });
+    }
+</script>
+
+</body>
+</html>
