@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic Electronics</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lexend', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #333;
+            transition: background-color 6s ease-in-out;
+            animation: colorChange 21s infinite alternate;
+        }
+
+        @keyframes colorChange {
+            0% { background-color: #1a1a2e; }
+            25% { background-color: #16213e; }
+            50% { background-color: #0f3460; }
+            75% { background-color: #53354a; }
+            100% { background-color: #1a1a2e; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 2em;
+            overflow: hidden;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1.5s ease; /* Fade in */
+        }
+
+        .section {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            padding: 2em;
+            margin: 1.5em 0;
+        }
+
+        h1, h2 {
+            margin: 0;
+            padding-bottom: 0.5em;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2em;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #ffd700;
+        }
+
+        p, ul {
+            margin: 0.5em 0;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            font-size: 1em;
+            text-align: center;
+            color: #ffd700;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #ccc;
+            margin: 1em 0;
+            border-left: 3px solid #ffd700;
+            padding-left: 1em;
+        }
+
+        /* Initial overlay */
+        #introOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a2e;
+            color: #ffd700;
+            font-size: 3em;
+            font-weight: bold;
+            z-index: 10;
+            text-align: center;
+            padding: 1em;
+            box-sizing: border-box;
+            transition: opacity 1s ease;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            #introOverlay {
+                font-size: 2em;
+                padding: 0 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #introOverlay {
+                font-size: 1.5em;
+                padding: 0 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Intro Overlay -->
+    <div id="introOverlay">Organic Electronics</div>
+    <div class="container">
+        <div class="section contact-info">
+            <h1>Michael Halpern</h1>
+            <p>Montreal, QC, Canada | Phone: 647-883-1913 | Email: mikeydorje@gmail.com</p>
+        </div>
+
+        <div class="section">
+            <h2>About Me</h2>
+            <p>With a lifelong passion for music and technology, I have over 30 years of experience in music production and audio engineering, along with more than a decade as a Web Developer and Technical Consultant. From a young age, I demonstrated advanced skills in both art and music, leading to formal training as a musician and artist at the Nova Scotia College of Art and Design and the Royal Conservatory of Music (Halifax).</p>
+            <p>Alongside this artistic foundation, my early fascination with technology broadened my expertise, enabling me to integrate technical skills into my creative pursuits. While my career began in music, this dual passion allowed me to evolve seamlessly into technical roles, combining both worlds to drive innovative results. I create high-impact digital platforms and deliver compelling media experiences across film, TV, games, apps, live events, artist music releases, web platforms, digital content, and diverse creative projects. Whether working within a team or overseeing a project, I bring a seamless blend of creativity and technical insight to deliver forward-thinking content and products.</p>
+        </div>
+
+        <div class="section">
+            <h2>Freelance Full-Stack Web Developer, Digital Media Specialist, and Technical Consultant</h2>
+            <p><strong>2011 – Present</strong></p>
+            <p><strong>Skillsets:</strong> Full-stack development, Ruby on Rails, JavaScript, HTML/CSS, API integration (OpenAI, Shopify, Squarespace, Stripe, Meta), e-commerce platforms, UX/UI design, CMS management, content strategy, digital marketing, SEO, data analytics, responsive design, database management (Postgres, Redis), performance optimization, project management, version control (Git), Heroku deployment, agile methodologies.</p>
+            <p><strong>Select Clients:</strong> ToneThreads, OpenClosit, Ollie Quinn, Aegis Mobile</p>
+        </div>
+
+        <div class="section">
+            <h2>m-Qube Inc. - Digital Content Production Manager / Creative Director</h2>
+            <p><strong>2003 – 2011</strong></p>
+            <p><strong>Skillsets:</strong> Mobile media production, multimedia content creation (audio, video, graphics), mobile website design, client relations, team leadership, project management, content strategy, cross-functional team coordination, QA/testing, branding and messaging, market analysis, data-driven strategy, digital marketing campaigns, visual design, digital asset management, strategic planning, performance analytics.</p>
+            <p><strong>Select Clients:</strong> CBS, Much Music, MTV, Rogers, Sesame Workshop, Showtime, Sony Pictures, Telus, Universal Music, Virgin Mobile, Warner Music</p>
+            <div class="quote">"Michael proved to be a motivated, reliable, and resourceful individual who worked with little supervision or direction in an often hectic environment. He developed techniques, processes, and standards that became used as best practices within m-Qube as well as being adopted by many external clients. His creativity and keen attention to quality resulted in a product that the whole company was proud of." ~ Nick Dunlop, Founder of m-Qube Inc.</div>
+        </div>
+
+        <div class="section">
+            <h2>Freelance Music Producer / Audio Engineer</h2>
+            <p><strong>1994 – Present</strong></p>
+            <p><strong>Skillsets:</strong> Music composition, audio production, mixing, mastering, sound design, live performance engineering, live sound mixing, DAWs (Ableton Live, Max for Live), film scoring, app and game music/sound production, music licensing, audio branding, MIDI programming, effects processing, creative direction, artist and event management, audio production training.</p>
+            <p><strong>Select Clients & Contributions:</strong> BBC, BT (Brian Transeau), Columbia Sportswear, Hope Recordings, Juno Awards, Molson Canada, MUTEK, Plumtree, Red Bull Music Academy, Tara Slone, TELUS</p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Fade out the intro overlay and fade in the resume
+            $('#introOverlay').fadeOut(2000, function() {
+                $('.container').css('opacity', '1');
+            });
+        });
+    </script>
+</body>
+</html>
