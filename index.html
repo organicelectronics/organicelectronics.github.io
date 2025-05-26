@@ -283,100 +283,43 @@
 </head>
 <body>
 
-    <div class="form-container">
-        <h2>Contact Us</h2>
-        <!-- 
-            Key elements for Cloudflare Pages Forms:
-            1. The <form> tag itself.
-            2. method="POST"
-            3. data-static-form-name="contactTest" (or any unique name for your form)
-        -->
-        <form method="POST" data-static-form-name="contactTest">
-            <div>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <div>
-                <button type="submit">Send Message</button>
-            </div>
-        </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Contact Form</title>
+</head>
+<body>
 
-        <!-- Optional: Simple success message handling with JavaScript -->
-        <div id="successMessage" class="success-message">
-            Thank you for your message! We'll be in touch soon.
+    <h2>Contact Us</h2>
+
+    <!--
+        Core requirements for Cloudflare Pages Forms:
+        1. method="POST"
+        2. data-static-form-name="yourChosenFormName" (e.g., "contact")
+        3. NO `action` attribute for the default Cloudflare success page.
+    -->
+    <form method="POST" data-static-form-name="contact">
+        <div>
+            <label for="name-input">Name:</label>
+            <input type="text" id="name-input" name="name" required>
         </div>
-    </div>
+        <div>
+            <label for="email-input">Email:</label>
+            <input type="email" id="email-input" name="email" required>
+        </div>
+        <div>
+            <label for="message-input">Message:</label>
+            <textarea id="message-input" name="message" required></textarea>
+        </div>
+        <div>
+            <button type="submit">Send Message</button>
+        </div>
+    </form>
 
-    <script>
-        // Optional: Basic JavaScript to show a success message
-        // Cloudflare Pages will redirect to a generic success page by default
-        // or you can specify a custom success page in your form tag:
-        // <form ... action="/thank-you.html">
-        // This script provides an inline success message.
-
-        const form = document.querySelector('form[data-static-form-name="contactTest"]');
-        const successMessageDiv = document.getElementById('successMessage');
-
-        if (form) {
-            form.addEventListener('submit', (event) => {
-                // This is a simplistic way to show a success message.
-                // For a more robust solution, you might check if the submission was actually successful,
-                // but Cloudflare Pages handles the actual submission and redirect.
-                // If the form submits without error, Cloudflare will handle it.
-                // We show the message optimistically.
-
-                // Prevent the default redirect for a moment to show the message,
-                // then allow the default Cloudflare redirect or custom action to proceed.
-                // In many cases, you might just let Cloudflare handle the redirect entirely
-                // to its own success page or your custom action="/thank-you.html" page.
-
-                // If you DON'T want to rely on Cloudflare's redirect and want to handle it all client-side
-                // with AJAX, that's more complex and usually not needed for basic Pages Forms.
-
-                // For this example, let's just show the message and let Cloudflare's redirect happen.
-                // The redirect often happens too fast to see this if not using a custom action attribute.
-
-                // A better way if you want an inline message without a full page reload/redirect
-                // from Cloudflare is to use fetch() to submit the form data and then show the message.
-                // However, for basic Cloudflare Pages Forms, letting it redirect is standard.
-
-                // If you add an action="/thank-you.html" to your form, Cloudflare will redirect there.
-                // If you don't, Cloudflare shows a generic success.
-
-                // For now, let's demonstrate how to capture and potentially show a message IF
-                // you were handling submission via fetch (which we are NOT doing here for simplicity
-                // to use the pure data-static-form-name feature).
-
-                // The simplest way to see a custom message is to have Cloudflare redirect
-                // to a specific "thank you" page YOU create. Add `action="/thank-you.html"`
-                // to the <form> tag and create a `thank-you.html` page.
-
-                // This script is more illustrative if you were going for an AJAX submission,
-                // which complicates basic Pages Forms.
-                // For now, rely on Cloudflare's default success page or a custom `action` page.
-
-                // Let's keep it simple and remove the JS that tries to intercept for now,
-                // as it can conflict with the default Pages Forms behavior if not done carefully.
-                // The `data-static-form-name` is designed to "just work" with a redirect.
-            });
-        }
-
-        // To show the success message IF the URL contains a success parameter (example)
-        // This is IF Cloudflare redirected back to the same page with a query param.
-        // By default, it redirects to a generic page OR your `action` attribute page.
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('submission') && urlParams.get('submission') === 'success' && successMessageDiv) {
-            successMessageDiv.style.display = 'block';
-        }
-    </script>
+</body>
+</html>
 
 </body>
 </html>
